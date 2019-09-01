@@ -29,7 +29,7 @@ class OrderController(Resource):
         return list(map(lambda l:l.json(), OrderModel.query.all())),201
 
 
-class AbsOrderController(Resource):
+class AbsOrderController(OrderController):
 
     @jwt_required()
     def get(self,_id):
