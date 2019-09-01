@@ -1,7 +1,6 @@
 from .modules import *
 
 
-
 # router
 api.add_resource(UserController,'/api/users')
 api.add_resource(AbsUserController,'/api/users/<int:_id>')
