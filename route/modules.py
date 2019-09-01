@@ -1,6 +1,5 @@
 # module
 from flask import Flask,request
-from config.db import Config
 from flask_restful import Api,Resource
 from flask_jwt import JWT,jwt_required
 from resources.controller.authenticate import *
