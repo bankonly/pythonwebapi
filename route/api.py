@@ -1,3 +1,5 @@
+from config.app import *
+from config.jwt import *
 from .modules import *
 
 
