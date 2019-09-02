@@ -4,5 +4,10 @@ Flask-JWT
 Flask-SQLAlchemy
 mysql-connector
 uwsgi
+flask_jwt_extended
 gunicorn
 pymysql
+# psycopg2
+eventlet
+flask_cors
+flask_socketio
