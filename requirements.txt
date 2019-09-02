@@ -8,3 +8,4 @@ flask_jwt_extended
 gunicorn
 pymysql
 psycopg2
+eventlet==x.y
