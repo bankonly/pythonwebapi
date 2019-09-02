@@ -9,14 +9,16 @@ class UserModel(db.Model):
     name = db.Column(db.String(50))
     email = db.Column(db.String(50))
     phone = db.Column(db.String(50))
+    isadmin = db.Column(db.SmallInteger)
     password = db.Column(db.String(50))
 
     order = db.relationship('OrderModel',lazy="dynamic")
 
-    def __init__(self,name,email,phone,password):
+    def __init__(self,name,email,phone,isadmin,password):
         self.name = name
         self.email = email
         self.phone = phone
+        self.isadmin = isadmin
         self.password = password
 
     def save_to_db(self):
@@ -45,6 +47,7 @@ class UserModel(db.Model):
             'name':self.name,
             'email':self.email,
             'phone':self.phone,
+            'isadmin':self.isadmin,
             'password':self.password,
             'order':list(map(lambda o:o.json(),self.order.all()))
         }
