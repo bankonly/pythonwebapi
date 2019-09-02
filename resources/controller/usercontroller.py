@@ -10,6 +10,7 @@ class UserController(Resource):
     parser.add_argument('name',required=True)
     parser.add_argument('email',required=True)
     parser.add_argument('phone',required=True)
+    parser.add_argument('isadmin',required=True)
     parser.add_argument('password',required=True)
 
     def post(self):
@@ -33,6 +34,9 @@ class AbsUserController(UserController):
     
     @jwt_required
     def delete(self,_id):
+        isadmin = get_jwt_claims()
+        if not isadmin['isadmin']:
+            return {'msg':'you have no permission'}
         users = UserModel.find_by_id(_id)
         if users:
             users.delete_from_db()
@@ -48,6 +52,7 @@ class AbsUserController(UserController):
             users.name = value.name
             users.email = value.email
             users.phone = value.phone
+            users.isadmin = value.isadmin
             users.password = value.password
             users.save_to_db()
             return users.json()
